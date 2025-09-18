@@ -1,5 +1,5 @@
 services:
-  attendee-worker-local:
+  attendee-worker-local-1:
     build: ./
     volumes:
      - .:/attendee
@@ -10,9 +10,130 @@ services:
       - REDIS_URL=redis://redis:6379/5
       - DJANGO_SETTINGS_MODULE=attendee.settings.development
       - ENABLE_CHROME_SANDBOX=true
-    command: "celery -A attendee worker -l INFO"
+    command: "celery -A attendee worker -l INFO --concurrency=1"
     security_opt:
       - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-2:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=true
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    security_opt:
+      - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-3:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=true
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    security_opt:
+      - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-4:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=true
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    security_opt:
+      - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-5:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=true
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    security_opt:
+      - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-6:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=true
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    security_opt:
+      - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-7:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=true
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    security_opt:
+      - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-8:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=true
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    security_opt:
+      - seccomp=./bots/web_bot_adapter/chrome_seccomp.json
+    mem_limit: 2g
+    memswap_limit: 2g
 
   attendee-scheduler-local:
     build: ./
