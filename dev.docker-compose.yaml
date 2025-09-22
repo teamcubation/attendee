@@ -89,6 +89,36 @@ services:
     mem_limit: 2g
     memswap_limit: 2g
 
+  attendee-worker-local-7:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=false
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    mem_limit: 2g
+    memswap_limit: 2g
+
+  attendee-worker-local-8:
+    build: ./
+    volumes:
+     - .:/attendee
+    networks:
+      - attendee_network
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_URL=redis://redis:6379/5
+      - DJANGO_SETTINGS_MODULE=attendee.settings.development
+      - ENABLE_CHROME_SANDBOX=false
+    command: "celery -A attendee worker -l INFO --concurrency=1"
+    mem_limit: 2g
+    memswap_limit: 2g
+
   attendee-scheduler-local:
     build: ./
     volumes:
